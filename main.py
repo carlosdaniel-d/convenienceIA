@@ -205,6 +205,9 @@ def servir_frontend():
         html_content = f.read()
     return HTMLResponse(content=html_content, status_code=200)
 
+@app.get("/test")
+def test():
+    return {"status": "ok", "mensaje": "La API esta viva"}
 
 
 
