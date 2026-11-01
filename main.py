@@ -1,3 +1,6 @@
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
+
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from typing import Optional, List
@@ -186,3 +189,9 @@ def asistente_dueno_dacliass(solicitud: SolicituddAcliass):
         "respuesta_sugerida": respuesta_generada,
         "estado": "Respuesta enviada al cliente"
     }
+
+
+
+@app.get("/", include_in_schema=False)
+def servir_frontend():
+    return FileResponse("index.html")
