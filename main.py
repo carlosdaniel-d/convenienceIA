@@ -194,11 +194,7 @@ def asistente_dueno_dacliass(solicitud: SolicituddAcliass):
 
 
 
-@app.get("/", include_in_schema=False)
-def servir_frontend():
-    ruta_actual = os.path.dirname(os.path.abspath(__file__))
-    ruta_archivo = os.path.join(ruta_actual, "index.html")
-    return FileResponse(ruta_archivo)
+app.mount("/", StaticFiles(directory=".", html=True), name="static")
 
 
 
