@@ -1,3 +1,5 @@
+import os
+
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 
@@ -194,7 +196,10 @@ def asistente_dueno_dacliass(solicitud: SolicituddAcliass):
 
 @app.get("/", include_in_schema=False)
 def servir_frontend():
-    return FileResponse("index.html")
+    ruta_actual = os.path.dirname(os.path.abspath(__file__))
+    ruta_archivo = os.path.join(ruta_actual, "index.html")
+    return FileResponse(ruta_archivo)
+
 
 
     
